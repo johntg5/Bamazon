@@ -21,12 +21,12 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    startPrompt();
+    welcomePrompt();
 });
 
 //=================================Inquirer introduction===============================
 
-function startPrompt() {
+function welcomePrompt() {
 
     inquirer.prompt([{
 
@@ -86,7 +86,7 @@ function inventoryView() {
             console.log("");
             console.log(table.toString());
             console.log("");
-            startPrompt();
+            welcomePrompt();
         });
     }
 }
@@ -130,7 +130,7 @@ function lowInventory() {
             console.log("");
             console.log(table.toString());
             console.log("");
-            startPrompt();
+            welcomePrompt();
         });
     }
 }
@@ -159,7 +159,7 @@ function addInventory() {
         }, {
             item_id: managerAdd.inputId
         }], function(err, res) {});
-        startPrompt();
+        welcomePrompt();
     });
 }
 
@@ -202,6 +202,6 @@ function addProduct() {
             price: managerNew.inputPrice,
             stock_quantity: managerNew.inputStock
         }, function(err, res) {});
-        startPrompt();
+        welcomePrompt();
     });
 }

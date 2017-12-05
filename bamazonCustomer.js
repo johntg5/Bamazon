@@ -21,12 +21,12 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    startPrompt();
+    welcomePrompt();
 });
 
 //=================================Inquirer introduction===============================
 
-function startPrompt() {
+function welcomePrompt() {
 
     inquirer.prompt([{
 
@@ -55,10 +55,10 @@ function inventory() {
         colWidths: [10, 30, 30, 30, 30]
     });
 
-    listInventory();
+    displayInventory();
 
     // table is an Array, so you can `push`, `unshift`, `splice` and friends
-    function listInventory() {
+    function displayInventory() {
 
         //Variable creation from DB connection
 
@@ -98,7 +98,7 @@ function continuePrompt() {
 
     }]).then(function(user) {
         if (user.continue === true) {
-            selectionPrompt();
+            purchasePrompt();
         }
         else {
             console.log("Thank you! Come back soon!");
@@ -108,7 +108,7 @@ function continuePrompt() {
 
 //=================================Item selection and Quantity desired===============================
 
-function selectionPrompt() {
+function purchasePrompt() {
 
     inquirer.prompt([{
 
@@ -134,7 +134,7 @@ function selectionPrompt() {
                     console.log("===================================================");
                     console.log("Sorry! Not enough in stock. Please try again later.");
                     console.log("===================================================");
-                    startPrompt();
+                    welcomePrompt();
 
                 }
                 else {
@@ -155,7 +155,7 @@ function selectionPrompt() {
                     var newStock = (res[i].stock_quantity - userPurchase.inputNumber);
                     var purchaseId = (userPurchase.inputId);
                     //console.log(newStock);
-                    confirmPrompt(newStock, purchaseId);
+                    confirmationPrompt(newStock, purchaseId);
                 }
             }
         });
@@ -164,7 +164,7 @@ function selectionPrompt() {
 
 //=================================Confirm Purchase===============================
 
-function confirmPrompt(newStock, purchaseId) {
+function confirmationPrompt(newStock, purchaseId) {
 
     inquirer.prompt([{
 
@@ -187,13 +187,13 @@ function confirmPrompt(newStock, purchaseId) {
             console.log("=================================");
             console.log("Transaction completed. Thank you.");
             console.log("=================================");
-            startPrompt();
+            welcomePrompt();
         }
         else {
             console.log("=================================");
             console.log("No worries. Maybe next time!");
             console.log("=================================");
-            startPrompt();
+            welcomePrompt();
         }
     });
 }
