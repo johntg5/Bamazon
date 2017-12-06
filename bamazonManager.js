@@ -32,7 +32,7 @@ function welcomePrompt() {
 
         type: "list",
         name: "actionList",
-        message: "Welcome Manager. What would you like to review?",
+        message: "Welcome Mr. Manager. What would you like to review?",
         choices: ["View Products For Sale", "View Low Inventory", "Add To Inventory", "Add New Product"]
 
     }]).then(function(user) {
@@ -148,7 +148,7 @@ function addInventory() {
         {
             type: "input",
             name: "inputNumber",
-            message: "How many units of this item would you like to have in the in-store stock quantity?",
+            message: "How many units of this item would you like to have in stock?",
 
         }
     ]).then(function(managerAdd) {

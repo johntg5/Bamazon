@@ -139,9 +139,9 @@ function purchasePrompt() {
                 }
                 else {
                     //list item information for user for confirm prompt
-                    console.log("===================================");
-                    console.log("Awesome! We can fulfill your order.");
-                    console.log("===================================");
+                    console.log("=====================================");
+                    console.log("Good News! We can fulfill your order.");
+                    console.log("=====================================");
                     console.log("You've selected:");
                     console.log("----------------");
                     console.log("Item: " + res[i].product_name);
@@ -190,9 +190,9 @@ function confirmationPrompt(newStock, purchaseId) {
             welcomePrompt();
         }
         else {
-            console.log("=================================");
-            console.log("No worries. Maybe next time!");
-            console.log("=================================");
+            console.log("================");
+            console.log("Maybe next time");
+            console.log("================");
             welcomePrompt();
         }
     });
